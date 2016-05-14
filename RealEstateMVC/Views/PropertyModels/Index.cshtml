@@ -1,0 +1,72 @@
+﻿@model IEnumerable<RealEstateMVC.Models.PropertyModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (var item in Model)
+{ 
+
+/*making squares*/
+   <div class="col-md-3 square bgImage"style="background-image: url('@item.ImageSource')">
+        <div class="content">
+            <div class="table">
+                <div class="Table-cell">
+                   <h1>@item.Title</h1> 
+                    <p>@item.Description</p>         
+                </div>
+            </div>
+        </div>
+   </div>
+}
+
+
+
+
+
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageSource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Edit", "Edit", new { id=item.PropertyID }) | 
+            @Html.ActionLink("Details", "Details", new { id=item.PropertyID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PropertyID })
+        </td>
+    </tr>
+}
+
+</table>
